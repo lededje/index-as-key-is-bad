@@ -1,13 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 type NameAndNumberProps = {
     name: string
 }
 
 const NameAndNumber = ({ name }: NameAndNumberProps) => {
-    const number = useMemo(() => Math.random().toFixed(3), []);
+    const [number, setNumber] = useState('0');
+
+    useEffect(() => {
+        setNumber(Math.random().toFixed(3))
+    }, [])
 
     return `${name} (${number}), `;
 }
